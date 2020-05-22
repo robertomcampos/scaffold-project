@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Portal.Application\Portal.Application.csproj" />
+    <ProjectReference Include="..\Portal.Data\Portal.Data.csproj" />
+    <ProjectReference Include="..\Portal.Entities\Portal.Entities.csproj" />
+    <ProjectReference Include="..\Portal.DTO\Portal.DTO.csproj" />
+  </ItemGroup>
+
+</Project>

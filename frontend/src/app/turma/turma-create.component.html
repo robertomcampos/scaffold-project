@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Nova Turma</h1>
+    <form [formGroup]="turmaForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Escola:</label>
+            <select formControlName="escolaId" required class="form-control" id="escola">
+                <option value="">Selecione uma Escola</option>
+                <option *ngFor="let escola of escolas" [ngValue]="escola.id">{{escola.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Turma:</label>
+            <input class="form-control" required type="text" formControlName="name" placeholder="Nome da Turma">
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!turmaForm.valid">Salvar</button>
+        <a class="btn btn-secondary" routerLink="/turmas">Cancelar</a>
+    </form>
+</div>
