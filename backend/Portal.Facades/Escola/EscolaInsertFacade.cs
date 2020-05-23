@@ -8,8 +8,8 @@ namespace Portal.Facades.Escola
     public class EscolaInsertFacade : IEscolaInsertFacade
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IEscolaInsertService _escolaService;
-        public EscolaInsertFacade(IUnitOfWork unitOfWork, IEscolaInsertService escolaService)
+        private readonly IEscolaCreateService _escolaService;
+        public EscolaInsertFacade(IUnitOfWork unitOfWork, IEscolaCreateService escolaService)
         {
             _unitOfWork = unitOfWork;
             _escolaService = escolaService;
@@ -17,7 +17,7 @@ namespace Portal.Facades.Escola
 
         public async Task Insert(EscolaRequest escola)
         {
-            await _escolaService.Insert(escola);
+            await _escolaService.Create(escola);
             await _unitOfWork.SaveChangesAsync();
         }
     }

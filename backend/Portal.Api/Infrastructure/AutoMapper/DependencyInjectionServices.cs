@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
-using Portal.Application.AutoMapper;
 
-namespace Portal.Application.Initialization
+namespace Portal.Api.Infrastructure.AutoMapper
 {
     public static class DependencyInjectionServices
     {
-        public static void AddApplicationDependencies(this IServiceCollection services)
+        public static void AddAutoMapperDependencies(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(DomainToViewModelMappingProfile), typeof(ViewModelToDomainMappingProfile));
         }

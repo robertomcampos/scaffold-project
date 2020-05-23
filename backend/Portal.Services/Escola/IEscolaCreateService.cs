@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Portal.Services.Escola
 {
-    public interface IEscolaInsertService
+    public interface IEscolaCreateService
     {
-        Task Insert(EscolaRequest escola);
+        Task Create(EscolaRequest escola);
     }
 }

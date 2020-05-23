@@ -8,20 +8,20 @@ using TurmaEntity = Portal.Domain.Entities.Turma;
 
 namespace Portal.Services.Turma
 {
-    public class TurmaInsertService : ITurmaInsertService
+    public class TurmaCreateService : ITurmaCreateService
     {
         private readonly IMapper _mapper;
         private readonly ITurmaRepository _turmaRepository;
         private readonly ITurmaValidator _validator;
 
-        public TurmaInsertService(ITurmaRepository turmaRepository, IMapper mapper, ITurmaValidator validator)
+        public TurmaCreateService(ITurmaRepository turmaRepository, IMapper mapper, ITurmaValidator validator)
         {
             _turmaRepository = turmaRepository;
             _mapper = mapper;
             _validator = validator;
         }
 
-        public async Task Insert(TurmaRequest request)
+        public async Task Create(TurmaRequest request)
         {
             var results = _validator.Validate(request);
 

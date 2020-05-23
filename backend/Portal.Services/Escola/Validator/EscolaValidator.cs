@@ -3,9 +3,9 @@ using Portal.Domain.DTO;
 
 namespace Portal.Services.Escola.Validator
 {
-    public class EscolaInsertValidator : AbstractValidator<EscolaRequest>, IEscolaValidator
+    public class EscolaValidator : AbstractValidator<EscolaRequest>, IEscolaValidator
     {
-        public EscolaInsertValidator()
+        public EscolaValidator()
         {
             RuleFor(p => p.Name)
                 .NotEmpty()

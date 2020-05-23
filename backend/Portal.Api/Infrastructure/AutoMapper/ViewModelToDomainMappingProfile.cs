@@ -2,7 +2,7 @@
 using Portal.Domain.DTO;
 using Portal.Domain.Entities;
 
-namespace Portal.Application.AutoMapper
+namespace Portal.Api.Infrastructure.AutoMapper
 {
     public class ViewModelToDomainMappingProfile : Profile
     {

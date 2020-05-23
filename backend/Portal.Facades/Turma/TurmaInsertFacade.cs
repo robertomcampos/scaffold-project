@@ -8,9 +8,9 @@ namespace Portal.Facades.Turma
     public class TurmaInsertFacade : ITurmaInsertFacade
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ITurmaInsertService _turmaService;
+        private readonly ITurmaCreateService _turmaService;
 
-        public TurmaInsertFacade(IUnitOfWork unitOfWork, ITurmaInsertService turmaService)
+        public TurmaInsertFacade(IUnitOfWork unitOfWork, ITurmaCreateService turmaService)
         {
             _unitOfWork = unitOfWork;
             _turmaService = turmaService;
@@ -18,7 +18,7 @@ namespace Portal.Facades.Turma
 
         public async Task Insert(TurmaRequest request)
         {
-            await _turmaService.Insert(request);
+            await _turmaService.Create(request);
             await _unitOfWork.SaveChangesAsync();
         }
     }

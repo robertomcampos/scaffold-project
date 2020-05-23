@@ -11,7 +11,7 @@ namespace Portal.Test
         [Fact]
         public void ShouldHaveValidationErrorForEmptyName()
         {
-            var validator = new EscolaInsertValidator();
+            var validator = new EscolaValidator();
 
             var escola = new EscolaRequest
             {
@@ -26,7 +26,7 @@ namespace Portal.Test
         [Fact]
         public void ShouldHaveSuccessForFilledName()
         {
-            var validator = new EscolaInsertValidator();
+            var validator = new EscolaValidator();
 
             var escola = new EscolaRequest
             {

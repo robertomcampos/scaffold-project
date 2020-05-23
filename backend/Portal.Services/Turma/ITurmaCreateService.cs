@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Portal.Services.Turma
 {
-    public interface ITurmaInsertService
+    public interface ITurmaCreateService
     {
-        Task Insert(TurmaRequest turma);
+        Task Create(TurmaRequest turma);
     }
 }

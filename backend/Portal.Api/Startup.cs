@@ -10,6 +10,7 @@ using Portal.Data;
 using Portal.Facades.Initialization;
 using Portal.Application.Initialization;
 using Portal.Services.Initialization;
+using Portal.Api.Infrastructure.AutoMapper;
 
 namespace Portal
 {
@@ -47,7 +48,7 @@ namespace Portal
 
             services.AddFacadesDependencies();
             services.AddServicesDependencies();
-            services.AddApplicationDependencies();
+            services.AddAutoMapperDependencies();
             services.AddDataDependencies();
         }
 
