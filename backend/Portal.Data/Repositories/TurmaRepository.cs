@@ -10,20 +10,13 @@ using System.Threading.Tasks;
 
 namespace Portal.Data.Repositories
 {
-    public class TurmaRepository: Repository<Turma>, ITurmaRepository
+    public class TurmaRepository : Repository<Turma>, ITurmaRepository
     {
-        private readonly IMapper _mapper;
+        public TurmaRepository(ApplicationContext context) : base(context) { }
 
-        public TurmaRepository(ApplicationContext context, IMapper mapper) : base(context)
+        public new IQueryable<Turma> Get()
         {
-            _mapper = mapper;
-        }
-
-        public async Task<PagedListResponse<TurmaResponse>> Get(int page, int limit)
-        {
-            return await base.Get().OrderByDescending(x => x.CreatedDate)
-                .ProjectTo<TurmaResponse>(_mapper.ConfigurationProvider)
-                .ToPagedListAsync(page, limit);
+            return base.Get().OrderByDescending(x => x.CreatedDate);
         }
     }
 }

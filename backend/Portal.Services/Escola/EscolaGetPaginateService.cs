@@ -1,24 +1,33 @@
-﻿using Portal.Data.UnitOfWork;
-using Portal.Domain.DTO;
+﻿using Portal.Domain.DTO;
+using Portal.Domain.Interfaces;
+using EscolaEntity = Portal.Domain.Entities.Escola;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
+using Portal.Extensions;
 
 namespace Portal.Services.Escola
 {
     public class EscolaGetPaginateService : IEscolaGetPaginateService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IEscolaRepository _escolaRepository;
+        private readonly IMapper _mapper;
 
-        public EscolaGetPaginateService(IUnitOfWork unitOfWork)
+        public EscolaGetPaginateService(IEscolaRepository escolaRepository, IMapper mapper)
         {
-            _unitOfWork = unitOfWork;
+            _escolaRepository = escolaRepository;
+            _mapper = mapper;
         }
 
         public async Task<PagedListResponse<EscolaResponse>> Get(PagingParametersRequest parameters)
         {
             try
             {
-                return await _unitOfWork.EscolaRepository.Get(parameters.Page, parameters.Limit);
+                return await _escolaRepository.Get()
+                    .ProjectTo<EscolaResponse>(_mapper.ConfigurationProvider)
+                    .ToPagedListAsync(parameters.Page, parameters.Limit);
             }
             catch (Exception ex)
             {

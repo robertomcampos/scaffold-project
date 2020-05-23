@@ -17,19 +17,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portal.Domain", "Portal.Dom
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{76DA70F7-FF1C-44EC-9979-B21E815AA754}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{5CBE3025-DDD6-41EB-B41B-A618B45A1FA7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra.Data", "Infra.Data", "{5CBE3025-DDD6-41EB-B41B-A618B45A1FA7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{2DF8D1A9-A50D-41BF-B6DD-80B388F647B9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{6853F3D9-82DC-42C6-96B6-706736BA1792}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{4C36683B-BFD0-477A-95EB-D1DA9BD7FDED}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{4C36683B-BFD0-477A-95EB-D1DA9BD7FDED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal.Extensions", "Portal.Extensions\Portal.Extensions.csproj", "{CF0F8C00-C3CB-4DB2-953B-C9F44B592C22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portal.Extensions", "Portal.Extensions\Portal.Extensions.csproj", "{CF0F8C00-C3CB-4DB2-953B-C9F44B592C22}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{B6D31A02-C8E9-484C-90A6-E3A11D456A71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal.Test", "Portal.Test\Portal.Test.csproj", "{F9B797A7-A7AD-41B4-B439-1192D33F2B46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portal.Test", "Portal.Test\Portal.Test.csproj", "{F9B797A7-A7AD-41B4-B439-1192D33F2B46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

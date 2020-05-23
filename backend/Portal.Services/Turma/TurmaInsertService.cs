@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using FluentValidation;
-using Portal.Data.UnitOfWork;
 using Portal.Domain.DTO;
+using Portal.Domain.Interfaces;
 using Portal.Services.Turma.Validator;
 using System.Threading.Tasks;
 using TurmaEntity = Portal.Domain.Entities.Turma;
@@ -11,12 +11,12 @@ namespace Portal.Services.Turma
     public class TurmaInsertService : ITurmaInsertService
     {
         private readonly IMapper _mapper;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ITurmaRepository _turmaRepository;
         private readonly ITurmaValidator _validator;
 
-        public TurmaInsertService(IUnitOfWork unitOfWork, IMapper mapper, ITurmaValidator validator)
+        public TurmaInsertService(ITurmaRepository turmaRepository, IMapper mapper, ITurmaValidator validator)
         {
-            _unitOfWork = unitOfWork;
+            _turmaRepository = turmaRepository;
             _mapper = mapper;
             _validator = validator;
         }
@@ -30,7 +30,7 @@ namespace Portal.Services.Turma
                 throw new ValidationException(results.Errors);
             }
 
-            await _unitOfWork.TurmaRepository.InsertAsync(_mapper.Map<TurmaEntity>(request));
+            await _turmaRepository.InsertAsync(_mapper.Map<TurmaEntity>(request));
         }
     }
 }
