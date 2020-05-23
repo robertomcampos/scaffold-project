@@ -13,7 +13,7 @@ namespace Portal.Services.Initialization
             services.AddTransient<IEscolaGetPaginateService, EscolaGetPaginateService>();
             services.AddTransient<IEscolaGetService, EscolaGetService>();
             services.AddTransient<IEscolaInsertService, EscolaInsertService>();
-            services.AddTransient<IEscolaValidator, EscolaValidator>();
+            services.AddTransient<IEscolaValidator, EscolaInsertValidator>();
             services.AddTransient<ITurmaGetPaginateService, TurmaGetPaginateService>();
             services.AddTransient<ITurmaInsertService, TurmaInsertService>();
             services.AddTransient<ITurmaValidator, TurmaValidator>();

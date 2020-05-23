@@ -1,11 +1,10 @@
-﻿using Portal.Application.Extension;
-using Portal.DTO;
+﻿using Portal.Domain.DTO;
 using System.Threading.Tasks;
 
 namespace Portal.Services.Turma
 {
     public interface ITurmaGetPaginateService
     {
-        Task<PagedList<TurmaResponse>> Get(PagingParametersRequest parameters);
+        Task<PagedListResponse<TurmaResponse>> Get(PagingParametersRequest parameters);
     }
 }

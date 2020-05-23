@@ -1,4 +1,4 @@
-﻿namespace Portal.Data.Repositories.Core
+﻿namespace Portal.Domain.Interfaces
 {
     public interface IRepositoryUpdate<T> where T : class
     {

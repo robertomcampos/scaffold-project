@@ -1,22 +1,22 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Portal.Entities
+namespace Portal.Domain.Entities
 {
-    public class Turma
+    public class Escola: BaseEntity
     {
-        public Guid Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
-        public Guid EscolaId { get; set; }
+        public string Address { get; set; }
         [Required]
         public DateTime CreatedDate { get; set; }
-        public Escola Escola { get; set; }
-        public Turma()
+
+        public string Test { get; set; }
+
+        public Escola()
         {
             CreatedDate = DateTime.UtcNow;
         }
     }
 }
-

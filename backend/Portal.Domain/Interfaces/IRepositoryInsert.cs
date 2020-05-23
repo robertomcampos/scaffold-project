@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Portal.Data.Repositories
+namespace Portal.Domain.Interfaces
 {
     public interface IRepositoryInsert<T> where T : class
     {

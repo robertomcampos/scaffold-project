@@ -1,5 +1,5 @@
 ﻿using Portal.Data.UnitOfWork;
-using Portal.DTO;
+using Portal.Domain.DTO;
 using Portal.Services.Turma;
 using System.Threading.Tasks;
 

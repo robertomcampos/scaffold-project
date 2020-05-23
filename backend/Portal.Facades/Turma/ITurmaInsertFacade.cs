@@ -1,4 +1,4 @@
-﻿using Portal.DTO;
+﻿using Portal.Domain.DTO;
 using System.Threading.Tasks;
 
 namespace Portal.Facades.Turma

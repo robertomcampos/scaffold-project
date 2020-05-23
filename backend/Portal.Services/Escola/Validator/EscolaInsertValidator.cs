@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using Portal.DTO;
+using Portal.Domain.DTO;
 
 namespace Portal.Services.Escola.Validator
 {
-    public class EscolaValidator : AbstractValidator<EscolaRequest>, IEscolaValidator
+    public class EscolaInsertValidator : AbstractValidator<EscolaRequest>, IEscolaValidator
     {
-        public EscolaValidator()
+        public EscolaInsertValidator()
         {
             RuleFor(p => p.Name)
                 .NotEmpty()

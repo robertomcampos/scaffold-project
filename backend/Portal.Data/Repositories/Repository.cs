@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Portal.Domain.Interfaces;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Portal.Data.Repositories.Core
+namespace Portal.Data.Repositories
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {

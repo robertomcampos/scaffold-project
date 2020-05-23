@@ -1,5 +1,4 @@
-﻿using Portal.Application.Extension;
-using Portal.DTO;
+﻿using Portal.Domain.DTO;
 using Portal.Services.Escola;
 using System.Threading.Tasks;
 
@@ -13,7 +12,7 @@ namespace Portal.Facades.Escola
             _escolaService = escolaService;
         }
 
-        public async Task<PagedList<EscolaResponse>> Get(PagingParametersRequest request)
+        public async Task<PagedListResponse<EscolaResponse>> Get(PagingParametersRequest request)
         {
             return await _escolaService.Get(request);
         }

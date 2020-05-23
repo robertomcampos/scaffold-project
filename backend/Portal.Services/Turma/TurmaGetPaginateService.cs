@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Portal.Application.Extension;
 using Portal.Data.UnitOfWork;
-using Portal.DTO;
+using Portal.Domain.DTO;
 using System.Threading.Tasks;
 
 namespace Portal.Services.Turma
@@ -18,13 +16,9 @@ namespace Portal.Services.Turma
             _mapper = mapper;
         }
 
-        public async Task<PagedList<TurmaResponse>> Get(PagingParametersRequest parameters)
+        public async Task<PagedListResponse<TurmaResponse>> Get(PagingParametersRequest parameters)
         {
-            return await _unitOfWork
-                .TurmaRepository
-                .Get()
-                .ProjectTo<TurmaResponse>(_mapper.ConfigurationProvider)
-                .ToPagedListAsync(parameters.Page, parameters.Limit);
+            return await _unitOfWork.TurmaRepository.Get(parameters.Page, parameters.Limit);
         }
     }
 }

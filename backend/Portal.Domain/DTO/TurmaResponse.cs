@@ -1,7 +1,7 @@
-﻿using Portal.Entities;
+﻿using Portal.Domain.Entities;
 using System;
 
-namespace Portal.DTO
+namespace Portal.Domain.DTO
 {
     public class TurmaResponse
     {

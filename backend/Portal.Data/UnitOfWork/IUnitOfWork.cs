@@ -1,4 +1,4 @@
-﻿using Portal.Data.Repositories;
+﻿using Portal.Domain.Interfaces;
 using System.Threading.Tasks;
 
 namespace Portal.Data.UnitOfWork

@@ -1,4 +1,6 @@
-﻿using Portal.Data.Repositories;
+﻿using AutoMapper;
+using Portal.Data.Repositories;
+using Portal.Domain.Interfaces;
 using System;
 using System.Threading.Tasks;
 
@@ -8,11 +10,13 @@ namespace Portal.Data.UnitOfWork
     {
         private ITurmaRepository _turmaRepository;
         private IEscolaRepository _escolaRepository;
+        private readonly IMapper _mapper;
         public ApplicationContext DatabaseContext { get; private set; }
 
-        public UnitOfWork(ApplicationContext databaseContext)
+        public UnitOfWork(ApplicationContext databaseContext, IMapper mapper)
         {
             DatabaseContext = databaseContext;
+            _mapper = mapper;
         }
 
         public async Task SaveChangesAsync()
@@ -21,7 +25,7 @@ namespace Portal.Data.UnitOfWork
             {
                 await DatabaseContext.SaveChangesAsync();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -33,7 +37,7 @@ namespace Portal.Data.UnitOfWork
             {
                 if (_turmaRepository == null)
                 {
-                    _turmaRepository = new TurmaRepository(DatabaseContext);
+                    _turmaRepository = new TurmaRepository(DatabaseContext, _mapper);
                 }
                 return _turmaRepository;
             }
@@ -45,10 +49,10 @@ namespace Portal.Data.UnitOfWork
             {
                 if (_escolaRepository == null)
                 {
-                    _escolaRepository = new EscolaRepository(DatabaseContext);
+                    _escolaRepository = new EscolaRepository(DatabaseContext, _mapper);
                 }
                 return _escolaRepository;
             }
         }
-     }
+    }
 }

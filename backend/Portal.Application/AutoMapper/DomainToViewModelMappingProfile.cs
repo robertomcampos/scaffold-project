@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Portal.Entities;
-using Portal.DTO;
+using Portal.Domain.DTO;
+using Portal.Domain.Entities;
 
 namespace Portal.Application.AutoMapper
 {

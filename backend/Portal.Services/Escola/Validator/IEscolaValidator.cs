@@ -1,5 +1,5 @@
 ﻿using FluentValidation.Results;
-using Portal.DTO;
+using Portal.Domain.DTO;
 
 namespace Portal.Services.Escola.Validator
 {

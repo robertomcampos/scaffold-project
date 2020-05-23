@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Portal.DTO;
+using Portal.Domain.DTO;
 
 namespace Portal.Services.Turma.Validator
 {

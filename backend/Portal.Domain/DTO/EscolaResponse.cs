@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Portal.DTO
+namespace Portal.Domain.DTO
 {
     public class EscolaResponse
     {

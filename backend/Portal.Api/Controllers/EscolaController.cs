@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Portal.DTO;
+using Portal.Domain.DTO;
 using Portal.Facades.Escola;
 using System.Threading.Tasks;
 

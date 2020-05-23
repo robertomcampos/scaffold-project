@@ -2,10 +2,10 @@
 using FluentValidation;
 using FluentValidation.Results;
 using Portal.Data.UnitOfWork;
-using Portal.DTO;
+using Portal.Domain.DTO;
 using Portal.Services.Escola.Validator;
-using EscolaEntity = Portal.Entities.Escola ;
 using System.Threading.Tasks;
+using EscolaEntity = Portal.Domain.Entities.Escola;
 
 namespace Portal.Services.Escola
 {
