@@ -10,9 +10,9 @@ namespace Portal.Facades.Initialization
         {
             services.AddTransient<IEscolaGetPaginateFacade, EscolaGetPaginateFacade>();
             services.AddTransient<IEscolaGetFacade, EscolaGetFacade>();
-            services.AddTransient<IEscolaInsertFacade, EscolaInsertFacade>();
+            services.AddTransient<IEscolaCreateFacade, EscolaCreateFacade>();
             services.AddTransient<ITurmaGetPaginateFacade, TurmaGetPaginateFacade>();
-            services.AddTransient<ITurmaInsertFacade, TurmaInsertFacade>();
+            services.AddTransient<ITurmaCreateFacade, TurmaCreateFacade>();
         }
     }
 }

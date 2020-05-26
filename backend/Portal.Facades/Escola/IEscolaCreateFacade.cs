@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Portal.Facades.Escola
 {
-    public interface IEscolaInsertFacade
+    public interface IEscolaCreateFacade
     {
-        Task Insert(EscolaRequest escola);
+        Task Create(EscolaRequest escola);
     }
 }

@@ -22,9 +22,9 @@ namespace Portal.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromServices]IEscolaInsertFacade escolaFacade, EscolaRequest request)
+        public async Task<IActionResult> Create([FromServices]IEscolaCreateFacade escolaFacade, EscolaRequest request)
         {
-            await escolaFacade.Insert(request);
+            await escolaFacade.Create(request);
             return Ok();
         }
     }

@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 
 namespace Portal.Facades.Escola
 {
-    public class EscolaInsertFacade : IEscolaInsertFacade
+    public class EscolaCreateFacade : IEscolaCreateFacade
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IEscolaCreateService _escolaService;
-        public EscolaInsertFacade(IUnitOfWork unitOfWork, IEscolaCreateService escolaService)
+        public EscolaCreateFacade(IUnitOfWork unitOfWork, IEscolaCreateService escolaService)
         {
             _unitOfWork = unitOfWork;
             _escolaService = escolaService;
         }
 
-        public async Task Insert(EscolaRequest escola)
+        public async Task Create(EscolaRequest escola)
         {
             await _escolaService.Create(escola);
             await _unitOfWork.SaveChangesAsync();

@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Portal.Facades.Turma
 {
-    public interface ITurmaInsertFacade
+    public interface ITurmaCreateFacade
     {
-        Task Insert(TurmaRequest school);
+        Task Create(TurmaRequest turma);
     }
 }

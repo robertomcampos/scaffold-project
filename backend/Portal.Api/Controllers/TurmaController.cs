@@ -16,9 +16,9 @@ namespace Portal.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromServices]ITurmaInsertFacade turmaFacade, TurmaRequest request)
+        public async Task<IActionResult> Create([FromServices]ITurmaCreateFacade turmaFacade, TurmaRequest request)
         {
-            await turmaFacade.Insert(request);
+            await turmaFacade.Create(request);
             return Ok();
         }
     }
