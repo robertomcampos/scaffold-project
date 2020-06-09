@@ -27,5 +27,20 @@ namespace Portal.Controllers
             await escolaFacade.Create(request);
             return Ok();
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> Remove([FromServices]IEscolaRemoveFacade escolaFacade, object request)
+        {
+            await escolaFacade.Remove(request);
+            return Ok();
+        }
+        
+        [HttpDelete]
+        [Route("all")]
+        public async Task<IActionResult> RemoveAll([FromServices]IEscolaRemoveAllFacade escolaFacade, string[] request)
+        {
+            await escolaFacade.RemoveAll(request);
+            return Ok();
+        }
     }
 }

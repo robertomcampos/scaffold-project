@@ -8,10 +8,12 @@ namespace Portal.Services.Escola.Validator
         public EscolaValidator()
         {
             RuleFor(p => p.Name)
+                .NotEmpty();
+
+            RuleFor(p => p.Email)
                 .NotEmpty()
-                .MinimumLength(12)
                 .EmailAddress();
-            
+
             RuleFor(p => p.Address).NotEmpty();
         }
     }

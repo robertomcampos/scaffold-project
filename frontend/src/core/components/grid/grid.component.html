@@ -1,0 +1,45 @@
+<table class="table table-striped" *ngIf="rowData && rowData.items">
+    <thead>
+        <tr>
+            <th scope="col" *ngIf="hasCheckAll">
+                <input type="checkbox" [checked]="checkedAll" (change)="gridCheckedAll()">
+            </th>
+            <th scope="col" *ngFor="let column of columnDefs">{{column.headerName}}</th>
+            <th scope="col" *ngIf="editUrl"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of rowData.items | paginate: {
+            id: 'listing_pagination',
+            itemsPerPage: rowData.itemsPerPage,
+            currentPage: rowData.currentPage,
+            totalItems: rowData.totalItems
+        }; let rowIndex = index">
+            <td scope="col" *ngIf="hasCheck || hasCheckAll">
+                <input type="checkbox" [checked]="checkedItems[rowIndex].checked" 
+                (change)="gridChecked(checkedItems[rowIndex])">
+            </td>
+            <td *ngFor="let column of columnDefs; let colIndex = index">{{item[columnDefs[colIndex].field]}}</td>
+            <td scope="col" *ngIf="editUrl">
+                <a routerLink="{{editUrl}}{{item.id}}">
+                    Editar
+                </a>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                <pagination-controls class="text-center" id="listing_pagination" maxSize="5" directionLinks="true"
+                    (pageChange)="gridPageChange($event)" previousLabel="Anterior" nextLabel="Próxima">
+                </pagination-controls>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<div class="row">
+    <div class="col form-group action-buttons">
+        <button class="btn btn-lg btn-success" (click)="gridRemoveAll()" [disabled]="!allCheckedItems.length">
+            Remover todos</button>
+    </div>
+</div>

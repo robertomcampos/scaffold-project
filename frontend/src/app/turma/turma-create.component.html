@@ -1,19 +1,32 @@
 <div class="container">
-    <h1>Nova Turma</h1>
+    <header>
+        <nav aria-label="breadcrumb" class="breadcrumb-container float-right">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><strong>Você está em: </strong><a routerLink="/home">Página Inicial</a></li>
+                <li class="breadcrumb-item"><a routerLink="/turmas">Turma</a></li>
+                <li class="breadcrumb-item active">Cadastrar Nova Turma</li>
+            </ul>
+        </nav>
+        <h2 class="main-title">Cadastrar Nova Turma</h2>
+    </header>
     <form [formGroup]="turmaForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label>Escola:</label>
-            <select formControlName="escolaId" required class="form-control" id="escola">
-                <option value="">Selecione uma Escola</option>
-                <option *ngFor="let escola of escolas" [ngValue]="escola.id">{{escola.name}}</option>
-            </select>
+        <div class="row">
+            <div class="col form-group">
+                <multi-select-field label="Escolas:" [formControl]="turmaForm.controls['escolaId']" 
+                    placeholder="Selecione uma Escola" bindLabel="name" [isMultiple]="false" [dataSource]="escolas" 
+                    [closeOnSelect]="true" bindValue="id">
+                </multi-select-field>                
+            </div>
+            <div class="col form-group">
+                <text-field label="Turma:" [formControl]="turmaForm.controls['name']" placeholder="Nome da Turma">
+                </text-field>
+            </div>
+        </div>        
+        <div class="row">
+            <div class="col form-group action-buttons">
+                <button type="submit" class="btn btn-lg btn-success" [disabled]="!turmaForm.valid">Salvar</button>
+                <a class="btn btn-link" routerLink="/turmas">Cancelar</a>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Turma:</label>
-            <input class="form-control" required type="text" formControlName="name" placeholder="Nome da Turma">
-        </div>
-
-        <button type="submit" class="btn btn-primary" [disabled]="!turmaForm.valid">Salvar</button>
-        <a class="btn btn-secondary" routerLink="/turmas">Cancelar</a>
     </form>
 </div>

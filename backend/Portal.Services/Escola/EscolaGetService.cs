@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-using Portal.Data.UnitOfWork;
 using Portal.Domain.DTO;
 using Portal.Domain.Interfaces;
 using System.Collections.Generic;

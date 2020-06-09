@@ -1,0 +1,11 @@
+<label class="control-label">{{label}}<span *ngIf="required">*</span></label>
+<ng-select
+    [formControl]="ngControl.control"
+    [items]="dataSource"
+    [multiple]="isMultiple"
+    [closeOnSelect]="closeOnSelect"
+    [searchable]="searchable"
+    [bindLabel]="bindLabel"
+    [placeholder]="placeholder"
+    [bindValue]="bindValue">
+</ng-select>

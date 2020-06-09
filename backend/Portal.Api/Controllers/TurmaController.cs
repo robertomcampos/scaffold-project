@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Portal.Domain.DTO;
+using Portal.Facades.Escola;
 using Portal.Facades.Turma;
+using Portal.Services.Turma;
 using System.Threading.Tasks;
 
 namespace Portal.Controllers
@@ -20,6 +23,12 @@ namespace Portal.Controllers
         {
             await turmaFacade.Create(request);
             return Ok();
+        }
+
+        [HttpGet("all")]        
+        public async Task<IActionResult> Get([FromServices]ITurmaGetFacade turmaFacade)
+        {
+            return Ok(await turmaFacade.Get());
         }
     }
 }

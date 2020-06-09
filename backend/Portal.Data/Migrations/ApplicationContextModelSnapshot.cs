@@ -19,7 +19,7 @@ namespace Portal.Data.Migrations
                 .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("Portal.Entities.Escola", b =>
+            modelBuilder.Entity("Portal.Domain.Entities.Escola", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,11 +32,12 @@ namespace Portal.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Test")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -44,7 +45,7 @@ namespace Portal.Data.Migrations
                     b.ToTable("Escolas");
                 });
 
-            modelBuilder.Entity("Portal.Entities.Turma", b =>
+            modelBuilder.Entity("Portal.Domain.Entities.Turma", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,9 +68,9 @@ namespace Portal.Data.Migrations
                     b.ToTable("Turmas");
                 });
 
-            modelBuilder.Entity("Portal.Entities.Turma", b =>
+            modelBuilder.Entity("Portal.Domain.Entities.Turma", b =>
                 {
-                    b.HasOne("Portal.Entities.Escola", "Escola")
+                    b.HasOne("Portal.Domain.Entities.Escola", "Escola")
                         .WithMany()
                         .HasForeignKey("EscolaId")
                         .OnDelete(DeleteBehavior.Cascade)

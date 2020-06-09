@@ -1,7 +1,9 @@
-﻿namespace Portal.Domain.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace Portal.Domain.Interfaces
 { 
     public interface IRepositoryGetById<T> where T : class
     {
-        T GetById(object id);
+        Task<T> GetById(object id);
     }
 }

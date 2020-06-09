@@ -1,16 +1,20 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Portal.Infrastructure;
-using Portal.Data;
-using Portal.Facades.Initialization;
-using Portal.Application.Initialization;
-using Portal.Services.Initialization;
 using Portal.Api.Infrastructure.AutoMapper;
+using Portal.Application.Initialization;
+using Portal.Data;
+using Portal.Data.Integration.Initialization;
+using Portal.Facades.Initialization;
+using Portal.Infrastructure;
+using Portal.Services.Initialization;
+using System.IO;
 
 namespace Portal
 {
@@ -27,6 +31,8 @@ namespace Portal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient();
+
             services.AddDbContext<ApplicationContext>(opts =>
                 opts.UseNpgsql(Configuration.GetConnectionString("postgreConnection"), b => b.MigrationsAssembly("Portal.Data")));
 
@@ -35,7 +41,11 @@ namespace Portal
                 options.AddPolicy(name: MyCorsPolicy,
                                   builder =>
                                   {
-                                      builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                                      builder
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader()
+                                      .SetIsOriginAllowed(origin => true)
+                                      .AllowCredentials();
                                   });
             });
 
@@ -50,6 +60,7 @@ namespace Portal
             services.AddServicesDependencies();
             services.AddAutoMapperDependencies();
             services.AddDataDependencies();
+            services.AddIntegrationDependencies();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationContext dataContext, ILoggerFactory loggerFactory)
@@ -70,6 +81,21 @@ namespace Portal
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.Map("/Projeto", staticApp =>
+            {
+                staticApp.UseStaticFiles();
+                staticApp.UseDefaultFiles();
+                // Enables deep linking for angular app (maps any unresolved request to index.html)
+                staticApp.UseRouter(r =>
+                   r.MapGet("{*url}",
+                       context =>
+                       {
+                           context.Response.ContentType = "text/html";
+                           return context.Response.SendFileAsync(Path.Combine(env.WebRootPath, "index.html"));
+                       })
+               );
             });
         }
     }

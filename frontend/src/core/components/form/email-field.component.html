@@ -1,0 +1,5 @@
+<label class="control-label">{{label}}<span *ngIf="required">*</span></label>
+<input type="email" class="form-control" [placeholder]="placeholder" 
+[formControl]="ngControl.control" 
+pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+[class.is-invalid]="ngControl.dirty && ngControl.invalid">

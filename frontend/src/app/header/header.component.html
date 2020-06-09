@@ -1,15 +1,7 @@
 <header>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-		<span class="navbar-brand">Gerenciamento de Escolas e Turmas</span>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-			aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+	<nav class="navbar navbar-expand-md navbar-light bg-light" style="background-color: rgba(255,255,255,.5) !important;">
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item" [ngClass]="{'active': activeItem==0}">
-					<a class="nav-link pointer" (click)="onClick(0)">Home</a>
-				</li>
 				<li class="nav-item" [ngClass]="{'active': activeItem==1}">
 					<a class="nav-link pointer" (click)="onClick(1)">Escolas</a>
 				</li>

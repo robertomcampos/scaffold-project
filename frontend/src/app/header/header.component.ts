@@ -8,10 +8,9 @@ import { Router } from '@angular/router';
 })
 
 export class HeaderComponent {
-    activeItem: number = 0;
-    HOME = 0;
-    SCHOOLS = 1;
-    CLASSES = 2;
+    activeItem: number = 1;
+    ESCOLAS = 1;
+    TURMAS = 2;
 
     constructor(private router: Router) { }
 
@@ -19,14 +18,12 @@ export class HeaderComponent {
         this.activeItem = value;
 
         switch (value) {
-            case this.HOME:
-                return this.router.navigateByUrl('/home');
-            case this.SCHOOLS:
+            case this.ESCOLAS:
                 return this.router.navigateByUrl('/escolas');
-            case this.CLASSES:
+            case this.TURMAS:
                 return this.router.navigateByUrl('/turmas');
             default:
-                return this.router.navigateByUrl('/home');
+                return this.router.navigateByUrl('/escolas');
         }
     }
 }

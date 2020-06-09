@@ -1,0 +1,102 @@
+@import "variables.scss";
+@import "functions.scss";
+@import "bootstrap-custom.scss";
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+.main-title {
+    font-family: $font-family-sans-serif;
+    letter-spacing: -0.020rem;    
+    .inner-title {
+        border-bottom: solid 1px #ccc;
+        padding-bottom: 8px;
+        letter-spacing: -0.035rem;
+    }
+    .badge {
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 0;
+        padding: 4px 7px;
+        margin: 10px 0 0 14px;
+        position: absolute;
+    }
+    > small:before {
+        // content: "›";
+        margin-right: 6px;
+    }
+}
+
+.container header {
+    margin: 30px 0;
+}
+
+.breadcrumb-container {
+    .breadcrumb {
+        background: transparent;
+        > li + li:before {
+            content: "›";
+        }
+        strong {
+            margin-right: 6px;
+            font-weight: 500;
+        }
+    }
+}
+.has-feedback {
+    .ng-touched.ng-invalid {
+        .control-label {
+            color: #dc3545;
+        }
+        .form-control {
+            border-color: #dc3545;
+            background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") no-repeat right calc(.375em + .1875rem) center;
+            background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+            color: #dc3545;
+        }
+        .form-control::placeholder {
+            color: #dc3545;
+            opacity: 1;
+        }
+    }
+}
+.control-label {
+    font-weight: 500;
+}
+.form-control {
+    @include border-radius($rounded-pixel);
+    border: solid 1px #ddd;
+    padding: 8px 12px;
+    transition: all .25s linear;
+    
+    &:focus {
+        border-color: #bbb;
+        background-color: #ececec;
+        color: #666;
+        box-shadow: none;
+    }
+}
+
+.first-time-try h3 {
+    line-height: 1.5;
+    
+    small.break-line {
+        display: block;
+        margin-bottom: 30px;
+    }
+}
+.action-buttons {
+    margin: 20px 0;
+    
+}
+.btn {
+    @include border-radius(20px 10px 20px 10px);
+    padding: 10px 30px;
+    cursor: pointer;
+    .btn-success {    
+        font-weight: 500;
+        background-color: teal;
+        border-color: teal;
+    }
+    .btn-link {
+        font-weight: 400;
+    }
+}

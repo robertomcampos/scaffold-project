@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Portal.Services.Aluno;
 using Portal.Services.Escola;
 using Portal.Services.Escola.Validator;
 using Portal.Services.Turma;
@@ -14,9 +15,13 @@ namespace Portal.Services.Initialization
             services.AddTransient<IEscolaGetService, EscolaGetService>();
             services.AddTransient<IEscolaCreateService, EscolaCreateService>();
             services.AddTransient<IEscolaValidator, EscolaValidator>();
+            services.AddTransient<IEscolaRemoveService, EscolaRemoveService>();
+            services.AddTransient<IEscolaRemoveAllService, EscolaRemoveAllService>();
             services.AddTransient<ITurmaGetPaginateService, TurmaGetPaginateService>();
             services.AddTransient<ITurmaCreateService, TurmaCreateService>();
             services.AddTransient<ITurmaValidator, TurmaValidator>();
+            services.AddTransient<ITurmaGetService, TurmaGetService>();
+            services.AddTransient<IAlunoGetService, AlunoGetService>();
         }
     }
 }

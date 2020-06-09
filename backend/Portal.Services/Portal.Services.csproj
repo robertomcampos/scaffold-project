@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Portal.Data.Integration\Portal.Data.Integration.csproj" />
     <ProjectReference Include="..\Portal.Data\Portal.Data.csproj" />
     <ProjectReference Include="..\Portal.Domain\Portal.Domain.csproj" />
   </ItemGroup>

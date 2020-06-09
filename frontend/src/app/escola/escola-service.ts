@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Escola } from './escola';
-import { ApiClient, HandleApiError } from '../services/apiClient.service'
+import { ApiClient } from '../services/apiClient.service'
+import { HandleApiError } from '../services/handleApiError.service'
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { IPaging, IPagingParams } from '../model/paginate.model';
@@ -17,8 +18,7 @@ export class EscolaService {
   getAll(): Observable<Escola[]> {
     return this.apiClient.get(`/escola/all`)
       .pipe(
-        tap(_ => console.log('listing classes')),
-        catchError(this.handleApiError.handleError<IPaging<Escola[]>>('listing classess'))
+        catchError(this.handleApiError.handleError<Escola[]>('listing classess'))
       );
   }
 
@@ -26,7 +26,6 @@ export class EscolaService {
     const query = toParams(params);
     return this.apiClient.get(`/escola?${query}`)
       .pipe(
-        tap(_ => console.log('listing classes')),
         catchError(this.handleApiError.handleError<IPaging<Escola>>('listing classess'))
       );
   }
@@ -34,7 +33,20 @@ export class EscolaService {
   create(data: Escola): Observable<any> {
     return this.apiClient.post('/escola', data)
       .pipe(
-        tap(_ => console.log('creating escola')),
+        catchError(this.handleApiError.handleError<Escola>('creating escola'))
+      );
+  }
+
+  removeAll(ids: string[]): Observable<any> {
+    return this.apiClient.deleteAll('/escola/all', ids)
+      .pipe(
+        catchError(this.handleApiError.handleError<Escola>('creating escola'))
+      );
+  }
+
+  remove(id: string): Observable<any> {
+    return this.apiClient.deleteAll('/escola', id)
+      .pipe(
         catchError(this.handleApiError.handleError<Escola>('creating escola'))
       );
   }

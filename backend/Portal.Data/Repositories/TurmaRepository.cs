@@ -1,12 +1,6 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Microsoft.EntityFrameworkCore;
-using Portal.Domain.DTO;
-using Portal.Domain.Entities;
+﻿using Portal.Domain.Entities;
 using Portal.Domain.Interfaces;
-using Portal.Extensions;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Portal.Data.Repositories
 {

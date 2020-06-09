@@ -10,9 +10,9 @@ namespace Portal.Domain.Entities
         [Required]
         public string Address { get; set; }
         [Required]
+        public string Email { get; set; }
+        [Required]
         public DateTime CreatedDate { get; set; }
-
-        public string Test { get; set; }
 
         public Escola()
         {

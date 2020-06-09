@@ -1,30 +1,25 @@
-<div class="container">
-    <h1>Escolas</h1>
-    <a class="btn btn-primary" routerLink="/escolas/new">Nova Escola</a>
-    <table class="table" *ngIf="escolas.length">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Endereço</th>
-                <th scope="col">Data de criação</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let escola of escolas | paginate: {
-                id: 'listing_pagination',
-                itemsPerPage: pageSize,
-                currentPage: page,
-                totalItems: total
-            }">
-                <td>{{escola.name}}</td>
-                <td>{{escola.address}}</td>
-                <td>{{escola.createdDate | date:'dd/MM/yyyy HH:mm:ss'}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <div *ngIf="escolas.length">
-        <pagination-controls class="text-center" id="listing_pagination" maxSize="5" directionLinks="true"
-            (pageChange)="onPageChange($event)" previousLabel="Anterior" nextLabel="Próxima">
-        </pagination-controls>
-    </div>
+<div class="container" *ngIf="!loading">
+    <header>
+        <nav aria-label="breadcrumb" class="breadcrumb-container float-right">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><strong>Você está em: </strong><a href="#">Página Inicial</a></li>
+                <li class="breadcrumb-item active">Listar Escolas</li>
+            </ul>
+        </nav>
+        <h2 class="main-title">Listar Escolas <small><a class="badge badge-primary" routerLink="/escolas/new">Cadastrar
+                    nova escola</a></small></h2>
+    </header>
+    <section class="empty-content">
+        <div class="row justify-content-center" *ngIf="!gridRowData.items.length">
+            <div class="col-8 first-time-try">
+                <h3><small class="break-line">Parece que nenhuma escola foi cadastrada.</small></h3>
+                <a class="btn btn-lg btn-success" routerLink="/escolas/new">Cadastrar nova Escola</a>
+            </div>
+        </div>
+    </section>
+    <section class="content" *ngIf="gridRowData.items.length">
+        <grid-component hasCheck="true" hasCheckAll="true" [rowData]="gridRowData" [columnDefs]="gridColumnDefs"
+            (onPageChange)="onPageChange($event)" (onRemoveAll)="onRemoveAll($event)" editUrl="/escolas/">
+        </grid-component>
+    </section>
 </div>

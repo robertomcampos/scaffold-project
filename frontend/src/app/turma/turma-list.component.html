@@ -1,30 +1,22 @@
-<div class="container">
-    <h1>Turmas</h1>
-    <a class="btn btn-primary" routerLink="/turmas/new">Nova Turma</a>
-    <table class="table" *ngIf="turmas.length">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Escola</th>
-                <th scope="col">Data de Criação</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let turma of turmas | paginate: {
-                id: 'listing_pagination',
-                itemsPerPage: pageSize,
-                currentPage: page,
-                totalItems: total
-            }">
-                <td>{{turma.name}}</td>
-                <td>{{turma.escola.name}}</td>
-                <td>{{turma.createdDate | date:'dd/MM/yyyy HH:mm:ss'}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <div *ngIf="turmas.length">
-        <pagination-controls class="text-center" id="listing_pagination" maxSize="5" directionLinks="true"
-            (pageChange)="onPageChange($event)" previousLabel="Anterior" nextLabel="Próxima">
-        </pagination-controls>
-    </div>
+<div class="container" *ngIf="!loading">
+    <header>
+        <nav aria-label="breadcrumb" class="breadcrumb-container float-right">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><strong>Você está em: </strong><a href="#">Página Inicial</a></li>
+                <li class="breadcrumb-item active">Turmas</li>
+            </ul>
+        </nav>
+        <h2 class="main-title">Listar Turmas <a class="badge badge-link" routerLink="/turmas/new">Cadastrar nova turma</a></h2>
+    </header>
+    <section class="empty-content">
+        <div class="row justify-content-center" *ngIf="!gridRowData.items.length">
+            <div class="col-8 first-time-try">
+                <h3><small class="break-line">Parece que nenhuma turma foi cadastrada.</small></h3>
+                <a class="btn btn-lg btn-success" routerLink="/turmas/new">Cadastrar nova Turma</a>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <grid-component [rowData]="gridRowData" [columnDefs]="gridColumnDefs" (onPageChange)="onPageChange($event)"></grid-component>
+    </section>
 </div>

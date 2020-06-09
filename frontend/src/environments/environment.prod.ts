@@ -1,10 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  domain: 'eleva.novoProjeto.com',
+  apiUrl: 'eleva.novoProjeto.api.com',
+  parentDomain: 'eleva.com',
 };
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

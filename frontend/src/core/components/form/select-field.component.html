@@ -1,0 +1,12 @@
+<label class="control-label">{{label}}<span *ngIf="required">*</span></label>
+<select [formControl]="ngControl.control" class="form-control" [class.is-invalid]="ngControl.dirty && ngControl.invalid">
+    <option value="">{{placeholder}}</option>
+    <option *ngFor="let item of items" [ngValue]="item.id">{{item.name}}</option>
+</select>
+<!-- <div *ngIf="ngControl.dirty && ngControl.invalid" >
+    <span class="glyphicon glyphicon-remove form-control-feedback fix-error-icon"></span>
+    <span class="sr-only">(error)</span>
+    <div class="error-msg">
+      deu ruim
+    </div>
+  </div> -->

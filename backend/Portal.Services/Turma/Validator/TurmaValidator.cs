@@ -9,8 +9,7 @@ namespace Portal.Services.Turma.Validator
         {
             RuleFor(p => p.Name)
                 .NotEmpty()
-                .MinimumLength(12)
-                .EmailAddress();
+                .MinimumLength(3);
             
             RuleFor(p => p.EscolaId).NotEmpty();
         }

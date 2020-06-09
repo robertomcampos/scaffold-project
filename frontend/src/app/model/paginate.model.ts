@@ -1,12 +1,12 @@
-export interface IPaging<T>  {
+export interface IPaging<T> {
     currentPage: number;
     totalPages: number;
     pageSize: number;
     totalCount: number;
-    items: Array<T>;
+    items: T[];
 }
 
-export interface IPagingParams  {
+export interface IPagingParams {
     page: number;
     limit: number;
 }

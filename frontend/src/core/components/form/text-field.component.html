@@ -1,0 +1,5 @@
+<label class="control-label">{{label}}<span *ngIf="required">*</span></label>
+<input type="text" class="form-control" [placeholder]="placeholder" [formControl]="ngControl.control"
+    [class.is-invalid]="ngControl.dirty && ngControl.invalid">
+
+    

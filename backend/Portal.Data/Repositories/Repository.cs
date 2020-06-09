@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Portal.Domain.Entities;
 using Portal.Domain.Interfaces;
 using System;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Portal.Data.Repositories
 {
-    public abstract class Repository<T> : IRepository<T> where T : class
+    public abstract class Repository<T> : IRepository<T> where T : BaseEntity
     {
         private readonly ApplicationContext _context;
         private readonly DbSet<T> table = null;
@@ -25,9 +26,9 @@ namespace Portal.Data.Repositories
         {
             return table.Where(predicate).AsQueryable();
         }
-        public T GetById(object id)
+        public async Task<T> GetById(object id)
         {
-            return table.Find(id);
+            return await table.FindAsync(id);
         }
         public async Task InsertAsync(T obj)
         {
@@ -42,6 +43,12 @@ namespace Portal.Data.Repositories
         {
             T existing = table.Find(id);
             table.Remove(existing);
+        }
+
+        public void DeleteRange(object[] ids)
+        {
+            var existing = table.Where(x => ids.Contains(x.Id));
+            table.RemoveRange(existing);
         }
     }
 }

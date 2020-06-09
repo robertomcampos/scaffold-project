@@ -1,0 +1,40 @@
+<div class="container">
+    <header>
+        <nav aria-label="breadcrumb" class="breadcrumb-container float-right">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><strong>Você está em: </strong><a routerLink="/home">Página Inicial</a></li>
+                <li class="breadcrumb-item"><a routerLink="/escolas">Escola</a></li>
+                <li class="breadcrumb-item active">Cadastrar Nova Escola</li>
+            </ul>
+        </nav>
+        <h2 class="main-title">Editar Escola</h2>
+    </header>
+    <div class="container">
+        <form [formGroup]="escolaForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col form-group has-feedback">
+                    <text-field required label="Nome:" [formControl]="escolaForm.controls['name']" placeholder="Nome da Escola"></text-field>
+                </div>
+                <div class="col form-group has-feedback">
+                    <text-field label="Endereço:" [formControl]="escolaForm.controls['address']" placeholder="Endereço da escola"></text-field>
+                </div>
+                <div class="col form-group has-feedback">
+                    <email-field label="Email:" [formControl]="escolaForm.controls['email']" placeholder="Email da escola"></email-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group form-check">
+                        <checkbox-field label="Termo de aceitação" [formControl]="escolaForm.controls['term']"></checkbox-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group action-buttons">
+                    <button type="submit" class="btn btn-lg btn-success" [disabled]="!escolaForm.valid">Salvar Escola</button>
+                    <a class="btn btn-lg btn-link" routerLink="/escolas">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
